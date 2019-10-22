@@ -1,0 +1,40 @@
+  <div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <div class="row">
+    <div class="col-md-3">
+      <h1 class="text-center">Listings</h1><br><br>
+    </div>
+    <div class="col-md-9 text-right">
+      <%= link_to 'New Listing', new_listing_path ,:class => 'btn blue-gradient waves-effect waves-light'%>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @listings.each do |listing| %>
+        <tr>
+          <td><%= listing.name %></td>
+          <td><%= listing.price %></td>
+          <td><%= listing.description %></td>
+          <td><%= link_to 'Show', listing,:class => 'btn blue-gradient waves-effect waves-light' %></td>
+          <% if current_user == listing.user %>
+              <td><%= link_to 'Edit', edit_listing_path(listing),:class => 'btn peach-gradient waves-effect waves-light' %></td>
+              <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } , :class => 'btn btn-danger waves-effect waves-light' %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+</div>
+

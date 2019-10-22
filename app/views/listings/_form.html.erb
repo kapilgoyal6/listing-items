@@ -1,0 +1,43 @@
+<div class="container">
+  <%= form_with(model: listing, local: true) do |form| %>
+    <% if listing.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+        <ul>
+        <% listing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field col-lg-12">
+      <%= form.hidden_field :user_id, value: current_user.id %>
+
+      <%= form.label :name %>
+      <%= form.text_field :name , autofocus: true, autocomplete: "title",  class: 'form-control'%>
+    </div>
+
+    <div class="field col-lg-12">
+      <%= form.label :price %>
+      <%= form.text_field :price , autofocus: true, autocomplete: "title",  class: 'form-control'%>
+    </div>
+
+    <div class="field col-lg-12">
+      <%= form.label :description %>
+      <%= form.text_area :description, autofocus: true, autocomplete: "description",  class: 'form-control' %>
+    </div>
+   
+    <div class="actions text-center">
+      <%= form.submit :class => 'new btn blue-gradient waves-effect waves-light' %>
+    </div>
+  <% end %>
+</div>
+
+<style type="text/css">
+  .new{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+</style>
