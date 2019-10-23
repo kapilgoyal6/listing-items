@@ -15,7 +15,7 @@
       <tr>
         <th>Name</th>
         <th>Price</th>
-        <th>Description</th>
+        <th>Bitcoin Address</th>
       </tr>
     </thead>
 
@@ -24,12 +24,14 @@
         <tr>
           <td><%= listing.name %></td>
           <td><%= listing.price %></td>
-          <td><%= listing.description %></td>
-          <td><%= link_to 'Show', listing,:class => 'btn blue-gradient waves-effect waves-light' %></td>
-          <% if current_user == listing.user %>
-              <td><%= link_to 'Edit', edit_listing_path(listing),:class => 'btn peach-gradient waves-effect waves-light' %></td>
-              <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } , :class => 'btn btn-danger waves-effect waves-light' %></td>
-          <% end %>
+          <td><%= link_to listing.bitcoin_address, listing.bitcoin_address, target: :blank if listing.bitcoin_address.present? %></td>
+          <td>
+            <%= link_to 'Show', listing, class: 'btn blue-gradient waves-effect waves-light' %>
+            <% if current_user == listing.user %>
+              <%= link_to 'Edit', edit_listing_path(listing),:class => 'btn peach-gradient waves-effect waves-light' %>
+              <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } , :class => 'btn btn-danger waves-effect waves-light' %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

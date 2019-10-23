@@ -14,23 +14,27 @@
 
     <div class="field col-lg-12">
       <%= form.hidden_field :user_id, value: current_user.id %>
-
       <%= form.label :name %>
-      <%= form.text_field :name , autofocus: true, autocomplete: "title",  class: 'form-control'%>
+      <%= form.text_field :name, autofocus: true, class: 'form-control'%>
     </div>
 
     <div class="field col-lg-12">
       <%= form.label :price %>
-      <%= form.text_field :price , autofocus: true, autocomplete: "title",  class: 'form-control'%>
+      <%= form.text_field :price,  class: 'form-control'%>
+    </div>
+
+    <div class="field col-lg-12">
+      <%= form.label :bitcoin_address %>
+      <%= form.text_field :bitcoin_address, class: 'form-control'%>
     </div>
 
     <div class="field col-lg-12">
       <%= form.label :description %>
-      <%= form.text_area :description, autofocus: true, autocomplete: "description",  class: 'form-control' %>
+      <%= form.text_area :description, class: 'form-control' %>
     </div>
    
     <div class="actions text-center">
-      <%= form.submit :class => 'new btn blue-gradient waves-effect waves-light' %>
+      <%= form.submit class: 'new btn blue-gradient waves-effect waves-light' %>
     </div>
   <% end %>
 </div>

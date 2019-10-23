@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /listings/new
@@ -73,6 +74,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :price, :description, :user_id)
+      params.require(:listing).permit(:name, :price, :bitcoin_address, :description, :user_id)
     end
 end
